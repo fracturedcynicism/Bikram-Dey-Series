@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The Bikram Dey Archive — A five-book thriller series. Institutional. Procedural. Fractured Cynicism." />
+  <title>The Bikram Dey Archive — Fractured Cynicism</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="font-md">
+
+<!-- ════════════════════════════════════════════════
+     MOBILE TOP BAR
+     ════════════════════════════════════════════════ -->
+<div id="mobile-bar">
+  <div class="mobile-series-title">Bikram Dey Archive</div>
+  <div class="mobile-controls">
+    <button id="mobile-nav-btn" class="mobile-icon-btn" aria-label="Navigation">☰</button>
+    <button id="mobile-inv-btn" class="mobile-icon-btn" aria-label="Body Inventory">⊕</button>
+  </div>
+</div>
+
+<!-- Mobile Drawers -->
+<div id="drawer-overlay" class="drawer-overlay"></div>
+
+<div id="mobile-nav-drawer" class="mobile-drawer nav-drawer">
+  <!-- Sidebar content cloned for mobile -->
+  <div class="sidebar-header">
+    <div class="archive-badge">AIFSFO — Restricted Archive</div>
+    <div class="series-title">The Bikram Dey Archive</div>
+    <div class="series-subtitle">FIVE BOOKS / FRACTURED CYNICISM / SUBJECT: ACTIVE</div>
+  </div>
+  <div class="book-nav" id="mobile-book-nav-list-wrap">
+    <div id="mobile-book-nav-list"></div>
+  </div>
+  <div class="chapter-nav-wrap" id="mobile-chapter-nav-wrap">
+    <div class="chapter-nav-label">Chapters</div>
+    <div id="mobile-chapter-nav-list"></div>
+  </div>
+</div>
+
+<div id="mobile-inv-drawer" class="mobile-drawer inv-drawer">
+  <div class="inventory-header">
+    <div class="inventory-label">Procedural Record</div>
+    <div class="inventory-title">Body Inventory</div>
+    <div class="inventory-subject">SUBJECT: BIKRAM DEY</div>
+  </div>
+  <div class="inventory-body" id="mobile-inventory-body">
+    <div class="inventory-book-block">
+      <div id="mobile-inventory-current">
+        <div class="inv-book-label" style="color:var(--text-muted);font-size:0.58rem;padding:8px 0">Select a book to view inventory</div>
+      </div>
+    </div>
+    <div class="inventory-history" id="mobile-inventory-history"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     MAIN APP LAYOUT
+     ════════════════════════════════════════════════ -->
+<div id="app">
+
+  <!-- ── LEFT SIDEBAR ─────────────────────────── -->
+  <aside id="sidebar">
+    <div class="sidebar-header">
+      <div class="archive-badge">AIFSFO — Restricted Archive</div>
+      <div class="series-title">The Bikram Dey Archive</div>
+      <div class="series-subtitle">FIVE BOOKS / FRACTURED CYNICISM</div>
+    </div>
+
+    <!-- Progress track -->
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <!-- Book list -->
+    <div class="book-nav" id="book-nav-list">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Chapter list -->
+    <div class="chapter-nav-wrap" id="chapter-nav-wrap">
+      <div class="chapter-nav-label">Chapters</div>
+      <div id="chapter-nav-list">
+        <div class="chapter-nav-item" style="cursor:default;color:var(--text-dim)">Open a book to navigate</div>
+      </div>
+    </div>
+
+    <!-- Sidebar footer / reading stats -->
+    <div class="sidebar-footer">
+      <div class="reading-stats">
+        <span>Progress: <span id="reading-stat-current">0%</span></span>
+        <span>ERT: <span id="reading-stat-total">—</span></span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── CENTER READING PANEL ──────────────────── -->
+  <main id="reader-panel">
+
+    <!-- Sticky top bar -->
+    <div class="reader-topbar">
+      <div class="topbar-location" id="topbar-location">
+        <span>The Bikram Dey Archive</span>
+      </div>
+      <div class="topbar-controls">
+        <button class="topbar-btn" id="font-decrease" title="Decrease font size">A−</button>
+        <button class="topbar-btn" id="font-increase" title="Increase font size">A+</button>
+        <button class="topbar-btn" onclick="loadBook(Math.max(0, window._state_currentBook - 1))" title="Previous book">← PREV</button>
+        <button class="topbar-btn" onclick="loadBook(Math.min(4, window._state_currentBook + 1))" title="Next book">NEXT →</button>
+      </div>
+    </div>
+
+    <!-- Loading indicator -->
+    <div id="loading-state" style="display:none;">
+      <div class="loading-icon"></div>
+      <div class="loading-text">Retrieving case file…</div>
+    </div>
+
+    <!-- Welcome / landing screen -->
+    <div id="welcome-screen" style="display:none;">
+      <div class="welcome-eyebrow">AIFSFO — Classified Series Archive / Level-2 Access</div>
+      <div class="welcome-title">The Bikram Dey Archive</div>
+      <div class="welcome-tagline">Fractured Cynicism</div>
+      <div class="welcome-divider"></div>
+      <div class="welcome-synopsis">
+        Five books. One body accumulating damage. A man who can read a room the way
+        other men read text — rapidly and without effort — and who cannot stop doing
+        this even when the room is a hospital ward, an election booth, a combat arena,
+        a naval procurement office, or the inside of his own institutional exhaustion.
+        <br><br>
+        What follows is the complete record. In order. Unchanged.
+      </div>
+
+      <div class="welcome-series-grid" id="welcome-series-grid">
+        <!-- Populated by JS -->
+      </div>
+
+      <button class="welcome-begin-btn" onclick="loadBook(0)">
+        BEGIN READING — BOOK ONE
+      </button>
+    </div>
+
+    <!-- Book content -->
+    <div id="book-content" style="display:none;">
+      <!-- Book header -->
+      <div class="book-header" id="book-header"></div>
+
+      <!-- Text area -->
+      <div class="reading-content" id="reading-content">
+        <div class="book-text" id="book-text"></div>
+      </div>
+
+      <!-- Inter-book navigation -->
+      <div style="padding:0 40px 60px;max-width:760px;margin:0 auto;">
+        <div style="border-top:1px solid var(--border);padding-top:32px;display:flex;justify-content:space-between;align-items:center;">
+          <button class="topbar-btn" id="prev-book-btn" onclick="navigateToPrevBook()" style="padding:10px 20px;">← Previous Book</button>
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);text-align:center;letter-spacing:0.1em;text-transform:uppercase;">
+            The Result Stands
+          </div>
+          <button class="topbar-btn" id="next-book-btn" onclick="navigateToNextBook()" style="padding:10px 20px;">Next Book →</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── RIGHT INVENTORY PANEL ──────────────────── -->
+  <aside id="inventory-panel">
+    <div class="inventory-header">
+      <div class="inventory-label">Procedural Medical Record</div>
+      <div class="inventory-title">Body Inventory</div>
+      <div class="inventory-subject">SUBJECT: BIKRAM DEY</div>
+    </div>
+
+    <div class="inventory-body" id="inventory-body">
+      <!-- Current book inventory -->
+      <div class="inventory-book-block">
+        <div id="inventory-current">
+          <div class="inv-book-label" style="color:var(--text-muted);font-size:0.58rem;padding:4px 0;">
+            Open a book to view status
+          </div>
+        </div>
+      </div>
+
+      <!-- History -->
+      <div class="inventory-history" id="inventory-history">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </aside>
+
+</div><!-- /#app -->
+
+<!-- ════════════════════════════════════════════════
+     SCRIPTS
+     ════════════════════════════════════════════════ -->
+<script src="js/app.js"></script>
+<script>
+  // Bridge for next/prev book navigation from topbar
+  function navigateToPrevBook() {
+    if (typeof State !== 'undefined') {
+      loadBook(Math.max(0, State.currentBookIndex - 1));
+    }
+  }
+  function navigateToNextBook() {
+    if (typeof State !== 'undefined') {
+      loadBook(Math.min(4, State.currentBookIndex + 1));
+    }
+  }
+
+  // Expose state index for topbar buttons
+  Object.defineProperty(window, '_state_currentBook', {
+    get() { return typeof State !== 'undefined' ? State.currentBookIndex : 0; }
+  });
+
+  // Sync mobile drawers with desktop content
+  const origLoadBook = window.loadBook;
+  window.loadBook = function(index) {
+    origLoadBook(index);
+    // Sync chapter list to mobile nav
+    setTimeout(() => {
+      const desktop = document.getElementById('chapter-nav-list');
+      const mobile = document.getElementById('mobile-chapter-nav-list');
+      if (desktop && mobile) {
+        mobile.innerHTML = desktop.innerHTML;
+      }
+      // Sync inventory to mobile
+      const desktopInv = document.getElementById('inventory-current');
+      const mobileInv = document.getElementById('mobile-inventory-current');
+      if (desktopInv && mobileInv) {
+        mobileInv.innerHTML = desktopInv.innerHTML;
+      }
+      const desktopHist = document.getElementById('inventory-history');
+      const mobileHist = document.getElementById('mobile-inventory-history');
+      if (desktopHist && mobileHist) {
+        mobileHist.innerHTML = desktopHist.innerHTML;
+      }
+    }, 300);
+  };
+
+  // Sync book nav to mobile
+  const origRender = window.renderBookNav;
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      const desktop = document.getElementById('book-nav-list');
+      const mobile = document.getElementById('mobile-book-nav-list');
+      if (desktop && mobile) {
+        mobile.innerHTML = desktop.innerHTML;
+      }
+    }, 800);
+  });
+</script>
+</body>
+</html>
