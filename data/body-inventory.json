@@ -1,0 +1,80 @@
+{
+  "inventory": {
+    "subject": "BIKRAM DEY",
+    "classification": "AIFSFO LEVEL-2 OFFICIAL",
+    "designation": "OPERATIONAL ASSET — SERIES RECORD",
+    "note": "All values represent functional capacity relative to pre-series baseline. Values are cumulative and do not reset between books."
+  },
+  "progression": [
+    {
+      "bookId": 1,
+      "bookSlug": "injury-time",
+      "label": "INJURY TIME",
+      "metrics": [
+        { "system": "SHOULDER", "value": 88, "unit": "%", "status": "COMPROMISED" },
+        { "system": "KNEE", "value": 91, "unit": "%", "status": "IMPACT DAMAGE" },
+        { "system": "VISION", "value": null, "unit": null, "status": "DEGRADED" },
+        { "system": "SPINE", "value": null, "unit": null, "status": "BASELINE" }
+      ],
+      "overallStatus": "ACTIVE",
+      "statusClass": "status-active",
+      "annotation": "Depth perception: moderate degradation. Nerve-related."
+    },
+    {
+      "bookId": 2,
+      "bookSlug": "no-contest",
+      "label": "NO CONTEST",
+      "metrics": [
+        { "system": "SHOULDER", "value": 82, "unit": "%", "status": "DEGRADING" },
+        { "system": "KNEE", "value": 85, "unit": "%", "status": "STABLE" },
+        { "system": "VISION", "value": null, "unit": null, "status": "COMPENSATING" },
+        { "system": "RIBS", "value": null, "unit": null, "status": "FRACTURED" }
+      ],
+      "overallStatus": "FUNCTIONAL",
+      "statusClass": "status-functional",
+      "annotation": "Left ribs 6 and 7: cold room damage. Not formally treated."
+    },
+    {
+      "bookId": 3,
+      "bookSlug": "last-ballot",
+      "label": "THE LAST BALLOT",
+      "metrics": [
+        { "system": "SHOULDER", "value": 78, "unit": "%", "status": "FURTHER LOSS" },
+        { "system": "KNEE", "value": 74, "unit": "%", "status": "DECLINING" },
+        { "system": "MIND", "value": null, "unit": null, "status": "HYPERVIGILANT" },
+        { "system": "RIBS", "value": 70, "unit": "%", "status": "SCAR TISSUE" }
+      ],
+      "overallStatus": "OBSERVING",
+      "statusClass": "status-observing",
+      "annotation": "Scar tissue non-compliant. Three vertebrae: baseline hold."
+    },
+    {
+      "bookId": 4,
+      "bookSlug": "glass-rulebook",
+      "label": "THE GLASS RULEBOOK",
+      "metrics": [
+        { "system": "SHOULDER", "value": 72, "unit": "%", "status": "CRITICAL" },
+        { "system": "KNEE", "value": 66, "unit": "%", "status": "STRUCTURAL" },
+        { "system": "MIND", "value": null, "unit": null, "status": "PATTERN MATCHING" },
+        { "system": "DEPTH", "value": 65, "unit": "%", "status": "COMPENSATING" }
+      ],
+      "overallStatus": "INSTITUTIONAL LIABILITY",
+      "statusClass": "status-liability",
+      "annotation": "Fourth optometrist report. Recovery: dependent on rest. Rest: non-compliant."
+    },
+    {
+      "bookId": 5,
+      "bookSlug": "ward",
+      "label": "WARD",
+      "metrics": [
+        { "system": "SHOULDER", "value": 70, "unit": "%", "status": "HELD" },
+        { "system": "KNEE", "value": 60, "unit": "%", "status": "MINIMUM" },
+        { "system": "MIND", "value": null, "unit": null, "status": "STILL WATCHING THE HANDS" },
+        { "system": "OVERALL", "value": null, "unit": null, "status": "ADMITTED" }
+      ],
+      "overallStatus": "RECOVERING, NOT RECOVERED",
+      "statusClass": "status-recovering",
+      "annotation": "Voluntary admission. Thirty-nine hours. He agreed to come."
+    }
+  ]
+}

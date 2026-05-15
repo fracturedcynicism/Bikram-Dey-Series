@@ -1,0 +1,75 @@
+{
+  "series": {
+    "title": "The Bikram Dey Archive",
+    "subtitle": "A Five-Book Thriller-Drama Series",
+    "tagline": "Fractured Cynicism",
+    "protagonist": "Bikram Dey"
+  },
+  "books": [
+    {
+      "id": 1,
+      "slug": "injury-time",
+      "title": "Injury Time",
+      "subtitle": "Being the first night of Bikram Dey",
+      "file": "books/injury-time.txt",
+      "atmosphere": "sodium-vapor",
+      "accentColor": "#C8832A",
+      "accentDim": "#7A4E18",
+      "bgTone": "#0D0B08",
+      "description": "A football match ends in a city-wide chase after Bikram makes three controversial calls.",
+      "setting": "Salt City Arena, Kolkata — one night"
+    },
+    {
+      "id": 2,
+      "slug": "no-contest",
+      "title": "No Contest",
+      "subtitle": "Being the second night of Bikram Dey",
+      "file": "books/no-contest.txt",
+      "atmosphere": "industrial",
+      "accentColor": "#B04030",
+      "accentDim": "#6A2818",
+      "bgTone": "#0B0A0D",
+      "description": "A correct disqualification at a combat tournament puts Bikram in a syndicate's crosshairs.",
+      "setting": "Sunrise Sports Complex, Kolkata — one night"
+    },
+    {
+      "id": 3,
+      "slug": "last-ballot",
+      "title": "The Last Ballot",
+      "subtitle": "Being the third night of Bikram Dey",
+      "file": "books/last-ballot.txt",
+      "atmosphere": "bureaucratic",
+      "accentColor": "#5A7A4A",
+      "accentDim": "#354A2A",
+      "bgTone": "#090C09",
+      "description": "Assigned to protect an election, Bikram uncovers an institutional conspiracy.",
+      "setting": "Various, West Bengal — six weeks"
+    },
+    {
+      "id": 4,
+      "slug": "glass-rulebook",
+      "title": "The Glass Rulebook",
+      "subtitle": "Being the fourth night of Bikram Dey",
+      "file": "books/glass-rulebook.txt",
+      "atmosphere": "institutional",
+      "accentColor": "#4A6A8A",
+      "accentDim": "#2A4060",
+      "bgTone": "#080A0C",
+      "description": "Officiating leads Bikram to uncover a high-level naval procurement conspiracy in Kolkata.",
+      "setting": "Tangra, Kolkata — one night"
+    },
+    {
+      "id": 5,
+      "slug": "ward",
+      "title": "Ward",
+      "subtitle": "Being the fifth night of Bikram Dey",
+      "file": "books/ward.txt",
+      "atmosphere": "clinical",
+      "accentColor": "#7A8A7A",
+      "accentDim": "#4A584A",
+      "bgTone": "#090B09",
+      "description": "While seeking rest in a rehab facility, Bikram uncovers a predatory data-harvesting scheme.",
+      "setting": "Maitri Wellness and Rehabilitation Centre, Barrackpore — thirty-nine hours"
+    }
+  ]
+}
